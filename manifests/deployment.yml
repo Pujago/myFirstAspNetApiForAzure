@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myfirstaspnetapi-deployment
+spec:
+  selector:
+    matchLabels:
+      app: myfirstaspnetapi-pod
+  template:
+    metadata:
+      labels:
+        app: myfirstaspnetapi-pod
+    spec:
+      containers:
+      - name: myfirstaspnetapi-pod
+        image: myfirstaspnetwebapiregistry.azurecr.io/myfirstaspnetapi:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
